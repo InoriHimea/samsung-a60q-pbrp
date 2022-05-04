@@ -6,7 +6,7 @@ on:
       MANIFEST_URL:
         description: 'MANIFEST_URL'
         required: true
-        default: 'git://github.com/PitchBlackRecoveryProject/manifest_pb.git'
+        default: 'https://github.com/PitchBlackRecoveryProject/manifest_pb.git'
       MANIFEST_BRANCH:
         description: 'LIBRARY_BRANCH'
         required: true
