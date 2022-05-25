@@ -82,8 +82,6 @@ jobs:
         cd workspace
         repo sync -j$(nproc --all) -f --force-sync
         ls -al
-        rm -r vendor/qcom/opensource/commonsys/cryptfs_hw
-        ls -al
       
     - name: Clone device tree
       run: |
