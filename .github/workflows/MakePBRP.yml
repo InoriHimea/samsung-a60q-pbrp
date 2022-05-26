@@ -97,15 +97,16 @@ jobs:
         source build/envsetup.sh
         lunch ${{ github.event.inputs.MAKEFILE_NAME }}-eng 
         make clean
-        make recoveryimage -j$(nproc --all) -k
-        whereis libcryptfs_hw.so
+        make recoveryimage -j$(nproc --all)
       
     - name: Upload to Release
       uses: softprops/action-gh-release@v1
       with:
-        files: workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/recovery.img
-        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.run_id }}
-        tag_name: ${{ github.run_id }}
-        body: Recovery for ${{ github.event.inputs.DEVICE_NAME }}
+        files: | 
+          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/**.img
+          workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/**.zip
+        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.event.inputs.LIBRARY_BRANCH }}
+        tag_name: ${{ github.event.inputs.LIBRARY_BRANCH }}-${{ github.event.inputs.DEVICE_TREE_BRANCH }}
+        body: BPRP Recovery for ${{ github.event.inputs.DEVICE_NAME }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
