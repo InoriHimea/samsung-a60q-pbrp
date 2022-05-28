@@ -105,8 +105,8 @@ jobs:
         files: | 
           workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/**.img
           workspace/out/target/product/${{ github.event.inputs.DEVICE_NAME }}/**.zip
-        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.event.inputs.LIBRARY_BRANCH }}
-        tag_name: ${{ github.run_id }}
-        body: BPRP Recovery for ${{ github.event.inputs.DEVICE_NAME }}
+        name: ${{ github.event.inputs.DEVICE_NAME }}-${{ github.event.inputs.MANIFEST_BRANCH }}
+        tag_name: ${{ github.event.inputs.DEVICE_TREE_BRANCH }}-${{ github.run_id }}
+        body: BPRP Recovery for ${{ github.event.inputs.MANIFEST_BRANCH }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
